@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  caddy:
+    container_name: caddy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddycerts:/root/.caddy
+      - /home/caddy/firmwares:/usr/share/caddy/fota
+      - /var/www/html:/usr/share/caddy/html
+    ports:
+      - 80:80 # needed for Let's Encrypt
+      - 443:443
+    environment:
+      TZ: Europe/Helsinki
+      # Update this if SSL required according to the use of your own cert or requuest one from Let's Encrypt
+      #- SSLCERTIFICATE=/path/to/ssl/fullcert.pem
+      #- SSLKEY=/path/to/ssl/key.pem
+      ACME_AGREE: 'true'              # agree to Let's Encrypt Subscriber Agreement
+      GRAFANA_DUCKDNS_DOMAIN: '${GRAFANA_DUCKDNS_DOMAIN}'
+      GRAFANA_DUCKDNS_TOKEN: ${GRAFANA_DUCKDNS_TOKEN}
+      GRAFANA_TARGET_SERVICE: '${GRAFANA_TARGET_SERVICE}'
+      PIHOLE_DOMAIN: '${PIHOLE_DOMAIN}'
+      PIHOLE_TARGET_SERVICE: '${PIHOLE_TARGET_SERVICE}'
+      EMAIL: '${EMAIL}'
+      LOCALHOST_NAME: '${LOCALHOST_NAME}'
+      LOCALHOST_IP: '${LOCALHOST_IP}'
+
+volumes:
+  caddycerts:
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK}
