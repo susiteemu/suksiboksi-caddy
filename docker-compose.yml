@@ -10,7 +10,6 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddycerts:/root/.caddy
-      - /home/caddy/firmwares:/usr/share/caddy/fota
       - /var/www/html:/usr/share/caddy/html
     ports:
       - 80:80 # needed for Let's Encrypt
