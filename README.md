@@ -5,6 +5,7 @@ This repository contains configuration for getting Caddy running inside a docker
 This particular setup reverse proxies into some of my services:
 
 - Grafana: has duckdns.org provided DNS and Let's Encypt SSL certificate
+- Homebridge: has duckdns.org provided DNS and Let's Encypt SSL certificate
 - InfluxDB: uses localhost and path
 - PiHole: uses local DNS
 
@@ -19,6 +20,9 @@ Following variables are required for fully working setup:
 GRAFANA_DUCKDNS_TOKEN=<YOUR_TOKEN>
 GRAFANA_DUCKDNS_DOMAIN=<YOUR_DOMAIN; e.g. grafana.duckdns.org>
 GRAFANA_TARGET_SERVICE=<YOUR_GRAFANA_TARGET_SERVICE; e.g. grafana:3000>
+HOMEBRIDGE_DUCKDNS_TOKEN=<YOUR_TOKEN>
+HOMEBRIDGE_DUCKDNS_DOMAIN=<YOUR_DOMAIN; e.g. homebridge.duckdns.org>
+HOMEBRIDGE_TARGET_SERVICE=<YOUR_HOMEBRIDGE_TARGET_SERVICE; e.g. homebridge:8581>
 PIHOLE_DOMAIN=<YOUR_PIHOLE_DOMAIN; e.g. pi.hole>
 PHIOLE_TARGET_SERVICE=<YOUR_PIHOLE_TARGET_SERVICE; e.g. pihole:8765>
 INFLUXDB_TARGET_SERVICE=<YOUR_INFLUX_TARGET_SERVICE; e.g. influxdb:8086>
