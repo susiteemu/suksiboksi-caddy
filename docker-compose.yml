@@ -31,6 +31,8 @@ services:
       EMAIL: '${EMAIL}'
       LOCALHOST_NAME: '${LOCALHOST_NAME}'
       LOCALHOST_IP: '${LOCALHOST_IP}'
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
 volumes:
   caddycerts:
