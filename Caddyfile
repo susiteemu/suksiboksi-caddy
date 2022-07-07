@@ -26,32 +26,6 @@
   }
 }
 
-{$HOMEBRIDGE_DUCKDNS_DOMAIN} {
-  tls {
-    dns duckdns {
-      api_token {env.HOMEBRIDGE_DUCKDNS_TOKEN}
-      override_domain {$HOMEBRIDGE_DUCKDNS_DOMAIN}
-    } 
-  }
-
-  encode zstd gzip
-
-  header / {
-      # Enable cross-site filter (XSS) and tell browser to block detected attacks
-      X-XSS-Protection "1; mode=block"
-      # Disallow the site to be rendered within a frame (clickjacking protection)
-      X-Frame-Options "DENY"
-      # Prevent search engines from indexing (optional)
-      X-Robots-Tag "none"
-      # Server name remove
-      -Server
-   }
-
-  reverse_proxy {$HOMEBRIDGE_TARGET_SERVICE} {
-      header_up X-Real-IP {remote_host}
-  }
-}
-
 {$PIHOLE_DOMAIN} {
   reverse_proxy {$PIHOLE_TARGET_SERVICE}
 }
