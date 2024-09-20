@@ -1,6 +1,6 @@
 FROM caddy:2-builder AS builder
 
-RUN xcaddy build --with github.com/caddy-dns/duckdns
+RUN xcaddy build --with github.com/caddy-dns/duckdns --with github.com/caddy-dns/cloudflare
 
 FROM caddy:2
 

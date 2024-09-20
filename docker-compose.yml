@@ -19,13 +19,17 @@ services:
       # Update this if SSL required according to the use of your own cert or requuest one from Let's Encrypt
       #- SSLCERTIFICATE=/path/to/ssl/fullcert.pem
       #- SSLKEY=/path/to/ssl/key.pem
-      ACME_AGREE: 'true'              # agree to Let's Encrypt Subscriber Agreement
+      ACME_AGREE: 'true' # agree to Let's Encrypt Subscriber Agreement
       GRAFANA_DUCKDNS_DOMAIN: '${GRAFANA_DUCKDNS_DOMAIN}'
       GRAFANA_DUCKDNS_TOKEN: ${GRAFANA_DUCKDNS_TOKEN}
       GRAFANA_TARGET_SERVICE: '${GRAFANA_TARGET_SERVICE}'
       PIHOLE_DOMAIN: '${PIHOLE_DOMAIN}'
       PIHOLE_TARGET_SERVICE: '${PIHOLE_TARGET_SERVICE}'
       EMAIL: '${EMAIL}'
+      DISH_BASH_GO_DOMAIN: '${DISH_BASH_GO_DOMAIN}'
+      DISH_BASH_GO_ZONE_TOKEN: '${DISH_BASH_GO_ZONE_TOKEN}'
+      DISH_BASH_GO_API_TOKEN: '${DISH_BASH_GO_API_TOKEN}'
+      DISH_BASH_GO_TARGET_SERVICE: '${DISH_BASH_GO_TARGET_SERVICE}'
       LOCALHOST_NAME: '${LOCALHOST_NAME}'
       LOCALHOST_IP: '${LOCALHOST_IP}'
 
@@ -36,3 +40,4 @@ networks:
   default:
     external:
       name: ${DOCKER_NETWORK}
+
