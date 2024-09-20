@@ -33,8 +33,8 @@
 {$DISH_BASH_GO_DOMAIN} {
   tls {
     dns cloudflare {
-      zone_token {env.CF_ZONE_TOKEN}
-	  api_token {env.CF_API_TOKEN}
+      zone_token {env.DISH_BASH_GO_ZONE_TOKEN}
+      api_token {env.DISH_BASH_GO_API_TOKEN}
     }
   }
 
