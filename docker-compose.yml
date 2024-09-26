@@ -11,6 +11,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddycerts:/root/.caddy
       - /var/www/html:/usr/share/caddy/html
+      - /home/caddy/infoscreen:/usr/share/caddy/infoscreen
     ports:
       - 80:80 # needed for Let's Encrypt
       - 443:443
@@ -40,4 +41,3 @@ networks:
   default:
     external:
       name: ${DOCKER_NETWORK}
-
