@@ -76,6 +76,11 @@ http://localhost, http://{$LOCALHOST_NAME}, http://{$LOCALHOST_IP} {
     reverse_proxy {$INFLUXDB_TARGET_SERVICE}
   }
 
+  handle_path /ruuvitag* {
+    rewrite * {path}
+    reverse_proxy {$RUUVITAG_HTTPSERVER_TARGET_SERVICE}
+  }
+
   handle {
     respond "Not found" 404
   }
