@@ -1,29 +1,29 @@
 # Caddyfile V2.0 config file
 
-# {$GRAFANA_DUCKDNS_DOMAIN} {
-#  tls {
-#    dns duckdns {
-#      api_token {env.GRAFANA_DUCKDNS_TOKEN}
-#      override_domain {$GRAFANA_DUCKDNS_DOMAIN}
-#    }
-#  }
-#  encode zstd gzip
+ {$GRAFANA_DUCKDNS_DOMAIN} {
+  tls {
+    dns duckdns {
+      api_token {env.GRAFANA_DUCKDNS_TOKEN}
+      override_domain {$GRAFANA_DUCKDNS_DOMAIN}
+    }
+  }
+  encode zstd gzip
 
-#  header / {
+  header / {
       # Enable cross-site filter (XSS) and tell browser to block detected attacks
-#      X-XSS-Protection "1; mode=block"
+      X-XSS-Protection "1; mode=block"
       # Disallow the site to be rendered within a frame (clickjacking protection)
-#      X-Frame-Options "DENY"
+      X-Frame-Options "DENY"
       # Prevent search engines from indexing (optional)
-#      X-Robots-Tag "none"
+      X-Robots-Tag "none"
       # Server name remove
-#      -Server
-#   }
+      -Server
+   }
 
-#  reverse_proxy {$GRAFANA_TARGET_SERVICE} {
-#      header_up X-Real-IP {remote_host}
-#  }
-#}
+  reverse_proxy {$GRAFANA_TARGET_SERVICE} {
+      header_up X-Real-IP {remote_host}
+  }
+}
 
 {$PIHOLE_DOMAIN} {
   reverse_proxy {$PIHOLE_TARGET_SERVICE}
